@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  env: {
+    MELI_API: 'https://api.mercadolibre.com/sites/MLA',
+  },
 }
 
 export default nextConfig

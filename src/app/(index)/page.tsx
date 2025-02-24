@@ -1,4 +1,4 @@
-import SearchBar from '@/components/SearchBar' // Caminho limpo com alias
+import SearchBar from '@/components/SearchBar'
 
 export default function Home() {
   return (
