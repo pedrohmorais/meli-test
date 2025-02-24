@@ -1,21 +1,31 @@
-import Container from '@/components/Container'
 import SearchBar from '@/components/SearchBar'
+import { itemsService } from '@/services/client/items.service'
+import { ItemsProvider } from './(providers)/ItemsProvider'
+import { IItems } from '../models/IItems'
+import ItemsPage from './(components)/ItemsPage'
 
-const ItemsPage = ({
+const Page = async ({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined }
+  searchParams?: { search: string; offset: string }
 }) => {
-  const search = searchParams?.search
-  console.log('props', searchParams?.search)
+  const query = searchParams?.search || ''
+  const offset = searchParams?.offset || '1'
+
+  let initialItems: IItems['items'] = []
+  try {
+    const data = await itemsService.search(query, offset)
+    initialItems = data.items
+  } catch (error) {
+    console.error('Erro ao buscar os itens:', error)
+  }
+
   return (
-    <div>
+    <ItemsProvider initialItems={initialItems}>
       <SearchBar />
-      <main className="bg-meliBgDefault h-screen">
-        <Container>{search}</Container>
-      </main>
-    </div>
+      <ItemsPage />
+    </ItemsProvider>
   )
 }
 
-export default ItemsPage
+export default Page

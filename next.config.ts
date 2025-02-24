@@ -7,6 +7,13 @@ const nextConfig: NextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'http2.mlstatic.com',
+      },
+    ],
+  },
   env: {
     MELI_API: 'https://api.mercadolibre.com/sites/MLA',
   },

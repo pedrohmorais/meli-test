@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { IItem } from '../IItem'
+import { IApiItem } from './IApiItem'
 
 interface FiltersPathFromRoot {
   id: string
@@ -23,5 +23,5 @@ interface Filters {
 export interface IApiItems {
   [key: string]: any
   filters: Filters[]
-  results: IItem[]
+  results: IApiItem[]
 }
