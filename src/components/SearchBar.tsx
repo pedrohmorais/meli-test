@@ -24,14 +24,16 @@ const SearchBar = () => {
   return (
     <div className="bg-meliBgPrimary p-2">
       <Container>
-        <Image
-          src="/meli-logo.png"
-          alt="Mercado Libre"
-          className="cursor-pointer"
-          width={148}
-          height={42}
-          onClick={handleLogoClick}
-        />
+        <div className="max-w-[54px] md:max-w-max overflow-hidden flex items-center">
+          <Image
+            src="/meli-logo.png"
+            alt="Mercado Libre"
+            className="cursor-pointer max-w-max"
+            width={148}
+            height={42}
+            onClick={handleLogoClick}
+          />
+        </div>
 
         <div className="flex flex-1 ml-[34px] relative">
           <input

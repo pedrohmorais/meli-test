@@ -16,6 +16,7 @@ export default {
         foreground: 'var(--foreground)',
         meliBgPrimary: 'var(--meli-bg-primary)',
         meliBgDefault: 'var(--meli-bg-default)',
+        meliBgDarkGrey: 'var(--meli-bg-darkGrey)',
         meliGreen: 'var(--meli-font-green)',
         meliBlue: 'var(--meli-font-blue)',
       },

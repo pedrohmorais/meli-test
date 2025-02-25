@@ -7,7 +7,7 @@ type ContainerProps = {
 
 const Container = ({ children, className = '' }: ContainerProps) => {
   return (
-    <div className={`max-w-container mx-auto flex ${className}`}>
+    <div className={`max-w-container mx-auto flex px-4 xl:px-0 ${className}`}>
       {children}
     </div>
   )

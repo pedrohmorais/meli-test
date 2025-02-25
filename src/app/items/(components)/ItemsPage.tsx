@@ -10,14 +10,18 @@ const ItemsPage = () => {
 
   return (
     <main className="bg-meliBgDefault min-h-screen">
-      <Container className="flex-col">
-        <div className="flex flex-col w-full gap-1 pt-8">
-          {pagedItems.length > 0 ? (
-            pagedItems.map((item) => <ItemCard key={item.id} item={item} />)
-          ) : (
-            <p>Nenhum item encontrado.</p>
-          )}
-        </div>
+      <div className="bg-meliBgDarkGrey">
+        <Container className="flex-col">
+          <div className="flex flex-col w-full gap-1 pt-8">
+            {pagedItems.length > 0 ? (
+              pagedItems.map((item) => <ItemCard key={item.id} item={item} />)
+            ) : (
+              <p>Nenhum item encontrado.</p>
+            )}
+          </div>
+        </Container>
+      </div>
+      <Container>
         <ItemPagination />
       </Container>
     </main>

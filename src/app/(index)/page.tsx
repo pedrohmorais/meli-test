@@ -72,8 +72,8 @@ export default function Home() {
 
   const bannerSection = (
     <section className="flex items-center text-center bg-meliBgPrimary">
-      <Container>
-        <div className="flex flex-col justify-center">
+      <Container className="items-center">
+        <div className="flex flex-col justify-center min-h-[300]">
           <h1 className="text-4xl font-bold text-meliBlue">LOJAS OFICIAIS</h1>
           <div className="flex items-center gap-4 mt-3">
             {thunderBtn}
@@ -87,8 +87,8 @@ export default function Home() {
           src="/banner.png"
           alt="Promoção Lojas Oficiais"
           width={400}
-          height={200}
-          className="mt-4"
+          height={267}
+          className="hidden md:block"
         />
       </Container>
     </section>
@@ -103,12 +103,12 @@ export default function Home() {
             <div className="text-meliDark mt-12 mb-7 flex justify-center text-meliBlue h-[60px] items-center">
               {card.icon}
             </div>
-            <p className="text-sm text-meliGray mt-1 text-center">
+            <p className="text-xs text-meliGray mt-1 text-center">
               {card.description}
             </p>
-            <button className="text-meliBlue font-semibold mt-3">
+            {/* <button className="text-meliBlue font-semibold mt-3">
               {card.button}
-            </button>
+            </button> */}
           </div>
         ))}
       </Container>
