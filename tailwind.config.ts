@@ -8,11 +8,16 @@ export default {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        "container": "1200px",
+      },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         meliBgPrimary: 'var(--meli-bg-primary)',
         meliBgDefault: 'var(--meli-bg-default)',
+        meliGreen: 'var(--meli-font-green)',
+        meliBlue: 'var(--meli-font-blue)',
       },
     },
   },

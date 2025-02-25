@@ -1,18 +1,19 @@
 import SearchBar from '@/components/SearchBar'
 import { itemsService } from '@/services/client/items.service'
 import { ItemsProvider } from './(providers)/ItemsProvider'
-import { IItems } from '../models/IItems'
 import ItemsPage from './(components)/ItemsPage'
+import { IItem } from '../models/IItem'
 
 const Page = async ({
   searchParams,
 }: {
-  searchParams?: { search: string; offset: string }
+  searchParams?: Promise<{ search: string; offset: string }>
 }) => {
-  const query = searchParams?.search || ''
-  const offset = searchParams?.offset || '1'
+  const queryParams = await searchParams;
+  const query = (await queryParams?.search) || ''
+  const offset = (await queryParams?.offset) || '1'
 
-  let initialItems: IItems['items'] = []
+  let initialItems: IItem[] = []
   try {
     const data = await itemsService.search(query, offset)
     initialItems = data.items

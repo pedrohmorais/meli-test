@@ -7,13 +7,19 @@ import { useRouter } from 'next/navigation'
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('')
+  const [searching, setSearching] = useState(false)
   const router = useRouter()
 
   const handleSearch = () => {
-    if (searchQuery.trim() !== '') {
+    if (searchQuery.trim() !== '' && !searching) {
+      setSearching(true)
       router.push(`/items?search=${encodeURIComponent(searchQuery)}`)
     }
   }
+
+  const handleLogoClick = () => {
+    router.push('/');
+  };
 
   return (
     <div className="bg-meliBgPrimary p-2">
@@ -21,11 +27,13 @@ const SearchBar = () => {
         <Image
           src="/meli-logo.png"
           alt="Mercado Libre"
-          width={150}
-          height={50}
+          className='cursor-pointer'
+          width={148}
+          height={42}
+          onClick={handleLogoClick}
         />
 
-        <div className="flex flex-1 ml-8 relative">
+        <div className="flex flex-1 ml-[34px] relative">
           <input
             type="text"
             name="buscar"
@@ -44,7 +52,7 @@ const SearchBar = () => {
             alt="Search Icon"
             width={20}
             height={20}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2"
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
             onClick={handleSearch}
           />
         </div>

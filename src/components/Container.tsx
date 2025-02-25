@@ -2,12 +2,12 @@ import { ReactNode } from 'react'
 
 type ContainerProps = {
   children: ReactNode
-  className: string
+  className?: string
 }
 
-const Container = ({ children, className }: ContainerProps) => {
+const Container = ({ children, className = '' }: ContainerProps) => {
   return (
-    <div className={`max-w-4xl mx-auto flex items-center ${className}`}>
+    <div className={`max-w-container mx-auto flex ${className}`}>
       {children}
     </div>
   )

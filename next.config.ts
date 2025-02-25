@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
     ],
   },
   env: {
-    MELI_API: 'https://api.mercadolibre.com/sites/MLA',
+    MELI_API: 'https://api.mercadolibre.com',
   },
 }
 
