@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       maxWidth: {
-        "container": "1200px",
+        container: '1200px',
       },
       colors: {
         background: 'var(--background)',

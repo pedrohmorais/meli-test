@@ -9,7 +9,7 @@ const Page = async ({
 }: {
   searchParams?: Promise<{ search: string; offset: string }>
 }) => {
-  const queryParams = await searchParams;
+  const queryParams = await searchParams
   const query = (await queryParams?.search) || ''
   const offset = (await queryParams?.offset) || '1'
 

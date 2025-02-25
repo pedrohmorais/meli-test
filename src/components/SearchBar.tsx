@@ -18,8 +18,8 @@ const SearchBar = () => {
   }
 
   const handleLogoClick = () => {
-    router.push('/');
-  };
+    router.push('/')
+  }
 
   return (
     <div className="bg-meliBgPrimary p-2">
@@ -27,7 +27,7 @@ const SearchBar = () => {
         <Image
           src="/meli-logo.png"
           alt="Mercado Libre"
-          className='cursor-pointer'
+          className="cursor-pointer"
           width={148}
           height={42}
           onClick={handleLogoClick}

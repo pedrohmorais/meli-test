@@ -9,8 +9,6 @@ import Container from '@/components/Container'
 const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
   const [selectedImage, setSelectedImage] = useState(0)
 
-
-
   const {
     pictures,
     title,
@@ -21,10 +19,10 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
     attributes,
   } = itemDetail
 
-  const getAttributeById = (attrId: string) => attributes
-    .find(({ id }) => attrId === id)
+  const getAttributeById = (attrId: string) =>
+    attributes.find(({ id }) => attrId === id)
 
-  const mainColor = getAttributeById('MAIN_COLOR');
+  const mainColor = getAttributeById('MAIN_COLOR')
 
   const navigationComponent = (
     <nav className="text-gray-500 text-sm mb-4">
@@ -49,9 +47,9 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
     </nav>
   )
   return (
-    <Container className='flex-col'>
+    <Container className="flex-col">
       {navigationComponent}
-      <div className="mx-auto p-4 bg-white shadow rounded-lg">       
+      <div className="mx-auto p-4 bg-white shadow rounded-lg">
         <div className="grid  grid-cols-1 md:grid-cols-[80px_474px_auto] gap-6">
           <ItemDetailThumbs
             selected={selectedImage}
@@ -76,15 +74,18 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
 
             <p className="text-3xl font-bold text-meliGreen">${price.amount}</p>
             <p className="text-sm text-meliGreen">
-              {installments_quantity}x de $ {installments_amount.toLocaleString()}
+              {installments_quantity}x de ${' '}
+              {installments_amount.toLocaleString()}
             </p>
             {free_shipping && (
               <p className="text-meliGreen font-semibold">Envio grátis</p>
             )}
 
-            {mainColor && <p>
-              <strong>Color:</strong> {mainColor.value_name}
-            </p>}
+            {mainColor && (
+              <p>
+                <strong>Color:</strong> {mainColor.value_name}
+              </p>
+            )}
           </div>
         </div>
 
@@ -92,10 +93,10 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
         <div className="mt-6">
           <h2 className="text-lg font-semibold mb-2">Descrição</h2>
           <p className="text-gray-700 text-sm">
-            O iPhone SE é o iPhone de 4.7 polegadas mais potente até agora. Possui
-            o chip A13 Bionic, oferecendo um desempenho incrível em apps, jogos e
-            fotos. Vem com modo Retrato e seis efeitos de iluminação para capturar
-            retratos com qualidade de estúdio.
+            O iPhone SE é o iPhone de 4.7 polegadas mais potente até agora.
+            Possui o chip A13 Bionic, oferecendo um desempenho incrível em apps,
+            jogos e fotos. Vem com modo Retrato e seis efeitos de iluminação
+            para capturar retratos com qualidade de estúdio.
           </p>
         </div>
       </div>

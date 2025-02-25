@@ -3,7 +3,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { itemsService } from '@/services/server/items.service'
 
 export const GET = async (request: NextRequest) => {
-  const { nextUrl: { searchParams } } = await request
+  const {
+    nextUrl: { searchParams },
+  } = await request
   const query = (await searchParams.get('q')) || ''
   const offset = (await searchParams.get('offset')) || ''
   try {
