@@ -5,10 +5,12 @@ interface IApiItemDetailPicture {
   url: string
 }
 
+export type ApiConditionsType = 'new'
+
 export interface IApiItemDetail {
   id: string
   title: string
-  condition: string
+  condition: ApiConditionsType
   thumbnail_id: string
   seller_id: string
   catalog_product_id: string

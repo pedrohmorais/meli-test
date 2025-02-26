@@ -1,4 +1,6 @@
 import { IItem } from '@/app/models/IItem'
+import { formatCurrency } from '@/app/utils/stringUtils'
+import { CURRENCY_ARS } from '@/constants/currencies'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
@@ -13,10 +15,10 @@ const ItemCard = ({ item }: CardProps) => {
   }
   return (
     <div
-      className="flex border shadow-sm p-4 bg-white w-full"
+      className="flex border shadow-sm px-8 py-4 bg-white w-full cursor-pointer"
       onClick={() => goToDetail()}
     >
-      <div className="w-40 h-40 flex-shrink-0 relative">
+      <div className="w-[180] h-[240] flex-shrink-0 relative">
         <Image
           src={item.picture}
           alt={item.title}
@@ -25,25 +27,25 @@ const ItemCard = ({ item }: CardProps) => {
         />
       </div>
 
-      <div className="ml-4 flex flex-col justify-center">
+      <div className="ml-4 flex flex-col justify-center py-6">
         <h2 className="text-lg font-medium text-gray-800">{item.title}</h2>
         {item?.seller && (
           <p className="text-sm text-gray-500">Por {item.seller}</p>
         )}
 
-        <p className="text-2xl font-bold text-gray-900 mt-4">
-          ${item.price.amount.toLocaleString()}
+        <p className="text-2xl font-bold text-gray-900 mt-5">
+          ${formatCurrency(item.price.amount, CURRENCY_ARS)}
         </p>
 
         {item.installments_quantity > 0 && (
           <p className="text-sm text-meliGreen">
             Mesmo preço em {item.installments_quantity}x de ${' '}
-            {item.installments_amount.toLocaleString()}
+            {formatCurrency(item.installments_amount, CURRENCY_ARS)}
           </p>
         )}
 
         {item.free_shipping && (
-          <p className="text-sm text-meliGreen font-medium mt-4">
+          <p className="text-sm text-meliGreen font-medium mt-6">
             Envío gratis
           </p>
         )}

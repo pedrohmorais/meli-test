@@ -1,21 +1,16 @@
 'use client'
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useState,
-} from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { itemsService } from '@/services/client/items.service'
 import { IItem } from '@/app/models/IItem'
+import { IItems } from '@/app/models/IItems'
 
 interface ItemsContextProps {
   items: IItem[]
   page: number
   totalPages: number
-  setPage: Dispatch<SetStateAction<number>>
+  changePage: (page: number) => void
   getPagedItems: () => IItem[]
-  fetchMoreItems: (query: string, offset: string) => Promise<void>
+  fetchMoreItems: (query: string, offset: string) => Promise<IItems | undefined>
 }
 
 export const ITEMS_PER_PAGE = 10
@@ -25,17 +20,35 @@ const ItemsContext = createContext<ItemsContextProps | undefined>(undefined)
 export const ItemsProvider = ({
   children,
   initialItems,
+  query,
+  initialOffset,
 }: {
   children: React.ReactNode
   initialItems: IItem[]
+  query: string
+  initialOffset: string
 }) => {
   const [items, setItems] = useState(initialItems || [])
   const [page, setPage] = useState(1)
+  const [offset, setOffset] = useState(initialOffset)
 
-  const fetchMoreItems = async (query: string, offset: string) => {
+  useEffect(() => {
+    setItems(initialItems)
+    setPage(1)
+    setOffset(initialOffset)
+  }, [initialItems, initialOffset])
+
+  useEffect(() => {
+    setOffset(initialOffset)
+  }, [query, initialOffset])
+
+  const fetchMoreItems = async () => {
     try {
-      const newItems = await itemsService.search(query, offset)
+      const newOffset = String(Number(offset) + 1)
+      const newItems = await itemsService.search(query, newOffset)
       setItems((prev) => [...prev, ...newItems.items])
+      setOffset(newOffset)
+      return newItems
     } catch (error) {
       console.error('Erro ao buscar mais itens:', error)
     }
@@ -47,13 +60,20 @@ export const ItemsProvider = ({
 
   const totalPages = Math.ceil(items.length / ITEMS_PER_PAGE)
 
+  const changePage = (newPage: number) => {
+    if (newPage > page && newPage * ITEMS_PER_PAGE === items.length) {
+      fetchMoreItems()
+    }
+    setPage(newPage)
+  }
+
   return (
     <ItemsContext.Provider
       value={{
         items,
         fetchMoreItems,
         page,
-        setPage,
+        changePage,
         getPagedItems,
         totalPages,
       }}

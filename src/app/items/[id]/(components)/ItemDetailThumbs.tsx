@@ -12,22 +12,24 @@ const ItemDetailThumbs = ({
   onSelect,
   selected,
 }: ItemDetailThumbsProps) => {
+  const maxItems = 7
   return (
     <div className="flex flex-col gap-2">
-      {thumbnails.map((thumb, index) => (
+      {thumbnails.slice(0, maxItems).map((thumb, index) => (
         <figure
           key={index}
           onClick={() => onSelect(index)}
           className={`
-            border rounded cursor-pointer hover:border-blue-500 w-20 h-20 flex items-center justify-center
-            ${selected === index ? 'border-blue-500' : ''}
+            border-2 rounded cursor-pointer hover:border-meliBlue w-[54] h-[54] flex items-center justify-center
+            overflow-hidden
+            ${selected === index ? 'border-meliBlue' : ''}
           `}
         >
           <Image
             src={thumb}
             alt={`Thumbnail ${index + 1}`}
-            width={80}
-            height={80}
+            width={44}
+            height={44}
             className="rounded object-cover"
           />
         </figure>

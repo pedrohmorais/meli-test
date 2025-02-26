@@ -14,6 +14,9 @@ const SearchBar = () => {
     if (searchQuery.trim() !== '' && !searching) {
       setSearching(true)
       router.push(`/items?search=${encodeURIComponent(searchQuery)}`)
+      setTimeout(() => {
+        setSearching(false)
+      }, 1000)
     }
   }
 

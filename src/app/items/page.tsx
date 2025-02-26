@@ -22,7 +22,11 @@ const Page = async ({
   }
 
   return (
-    <ItemsProvider initialItems={initialItems}>
+    <ItemsProvider
+      initialItems={initialItems}
+      query={query}
+      initialOffset={offset}
+    >
       <SearchBar />
       <ItemsPage />
     </ItemsProvider>

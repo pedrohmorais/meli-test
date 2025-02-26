@@ -17,7 +17,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   return (
     <div>
       <SearchBar />
-      <main className="bg-meliBgDefault h-screen">
+      <main className="bg-meliBgDefault min-h-screen">
         <Container>
           <ItemDetail itemDetail={itemDetail} />
         </Container>

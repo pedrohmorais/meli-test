@@ -3,11 +3,10 @@
 import { useItems } from '../(providers)/ItemsProvider'
 
 const ItemPagination = () => {
-  const { page, setPage, totalPages } = useItems()
+  const { page, changePage, totalPages } = useItems()
 
   const handlePageChange = (page: number) => {
-    setPage(page)
-    // fetchMoreItems("", page.toString()); // Atualiza os itens com a nova página
+    changePage(page)
   }
 
   return (

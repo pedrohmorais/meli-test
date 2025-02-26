@@ -5,6 +5,9 @@ import ItemDetailThumbs from './ItemDetailThumbs'
 import Image from 'next/image'
 import { useState } from 'react'
 import Container from '@/components/Container'
+import { formatCurrency, translateCondition } from '@/app/utils/stringUtils'
+import { LANG_ES_AR } from '@/constants/languages'
+import { CURRENCY_ARS } from '@/constants/currencies'
 
 const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
   const [selectedImage, setSelectedImage] = useState(0)
@@ -17,6 +20,10 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
     installments_amount,
     price,
     attributes,
+    description,
+    condition,
+    sold_quantity,
+    category_path_from_root,
   } = itemDetail
 
   const getAttributeById = (attrId: string) =>
@@ -25,32 +32,29 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
   const mainColor = getAttributeById('MAIN_COLOR')
 
   const navigationComponent = (
-    <nav className="text-gray-500 text-sm mb-4">
-      <a href="#" className="hover:underline">
+    <nav className="text-gray-500 text-sm mb-2 mt-6">
+      <a
+        href={`/items?search=${title}`}
+        className="hover:underline text-meliBlue"
+      >
         Volver al listado
-      </a>{' '}
-      &gt;
-      <a href="#" className="hover:underline">
-        {' '}
-        Celulares y Teléfonos
-      </a>{' '}
-      &gt;
-      <a href="#" className="hover:underline">
-        {' '}
-        Celulares y Smartphones
-      </a>{' '}
-      &gt;
-      <a href="#" className="hover:underline">
-        {' '}
-        Apple iPhone
       </a>
+      {' | '}
+      {category_path_from_root.map((categoryName, index) => {
+        return (
+          <span key={categoryName}>
+            Celulares y Teléfonos
+            {index <= category_path_from_root.length - 2 ? ' > ' : ''}
+          </span>
+        )
+      })}
     </nav>
   )
   return (
     <Container className="flex-col">
       {navigationComponent}
-      <div className="mx-auto p-4 bg-white shadow rounded-lg">
-        <div className="grid  grid-cols-1 md:grid-cols-[80px_474px_auto] gap-6">
+      <div className="p-4 bg-white shadow rounded-lg mb-6">
+        <div className="grid  grid-cols-1 md:grid-cols-[54px_474px_auto] gap-6">
           <ItemDetailThumbs
             selected={selectedImage}
             onSelect={setSelectedImage}
@@ -68,14 +72,21 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <span className="text-sm text-gray-500">Novo | +100 vendidos</span>
+            <span className="text-sm meliBlack font-light mt-6">
+              {translateCondition(condition, LANG_ES_AR)} | +{sold_quantity}{' '}
+              vendidos
+            </span>
             <h1 className="text-2xl font-semibold">{title}</h1>
-            {/* <span className="text-gray-600">Por <strong>OCEANGREEN ARGENTINA</strong></span> */}
+            <span className="meliBlack font-light">
+              Por <strong>OCEANGREEN ARGENTINA</strong>
+            </span>
 
-            <p className="text-3xl font-bold text-meliGreen">${price.amount}</p>
+            <p className="text-3xl font-bold text-meliBlack">
+              ${formatCurrency(price.amount, CURRENCY_ARS)}
+            </p>
             <p className="text-sm text-meliGreen">
-              {installments_quantity}x de ${' '}
-              {installments_amount.toLocaleString()}
+              Mismo precio en {installments_quantity || 9} quotas de ${' '}
+              {formatCurrency(installments_amount || 15000, CURRENCY_ARS)}
             </p>
             {free_shipping && (
               <p className="text-meliGreen font-semibold">Envio grátis</p>
@@ -89,15 +100,11 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
           </div>
         </div>
 
-        {/* Descrição */}
-        <div className="mt-6">
-          <h2 className="text-lg font-semibold mb-2">Descrição</h2>
-          <p className="text-gray-700 text-sm">
-            O iPhone SE é o iPhone de 4.7 polegadas mais potente até agora.
-            Possui o chip A13 Bionic, oferecendo um desempenho incrível em apps,
-            jogos e fotos. Vem com modo Retrato e seis efeitos de iluminação
-            para capturar retratos com qualidade de estúdio.
-          </p>
+        <div className="mt-6 pt-4 border-t border-meliBgDarkGrey pb-4">
+          <h2 className="text-lg font-semibold mb-3">Descripción</h2>
+          <pre className="text-meliBlackLight font-light text-sm">
+            {description}
+          </pre>
         </div>
       </div>
     </Container>

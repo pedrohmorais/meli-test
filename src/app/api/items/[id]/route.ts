@@ -1,7 +1,5 @@
-// import { URLS } from '@/constants/urls';
 import { itemsService } from '@/services/server/items.service'
 import { NextRequest, NextResponse } from 'next/server'
-// import { itemsService } from '@/services/server/items.service'
 
 export const GET = async (
   _: NextRequest,

@@ -1,3 +1,5 @@
+import { IApiItemCategory } from '@/app/models/external/IApiItemCategory'
+import { IApiItemDescription } from '@/app/models/external/IApiItemDescription'
 import { IApiItemDetail } from '@/app/models/external/IApiItemDetail'
 import { IItemDetail } from '@/app/models/IItemDetail'
 
@@ -7,7 +9,11 @@ const getDecimalPlaces = (num: number): number => {
   return decimalPart ? decimalPart.length : 0
 }
 
-export const itemDetailMapper = (item: IApiItemDetail): IItemDetail => {
+export const itemDetailMapper = (
+  item: IApiItemDetail,
+  description: IApiItemDescription,
+  category: IApiItemCategory,
+): IItemDetail => {
   const {
     id,
     title,
@@ -47,18 +53,7 @@ export const itemDetailMapper = (item: IApiItemDetail): IItemDetail => {
         name,
         value_name,
       })),
-    category_path_from_root: [],
+    description: description?.plain_text || '',
+    category_path_from_root: category.path_from_root.map(({ name }) => name),
   }
 }
-
-// export const itemDetailMapper = (apiItems: IApiItems): IItems => {
-//   const { filters, results } = apiItems
-//   const categories =
-//     filters.find(({ id }) => id === 'category')?.values.map(({ id }) => id) ||
-//     []
-
-//   return {
-//     categories,
-//     items: results.map(item => Detail(item)),
-//   }
-// }
