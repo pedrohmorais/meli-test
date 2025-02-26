@@ -5,7 +5,7 @@ import ItemDetailThumbs from './ItemDetailThumbs'
 import Image from 'next/image'
 import { useState } from 'react'
 import Container from '@/components/Container'
-import { formatCurrency, translateCondition } from '@/app/utils/stringUtils'
+import { formatCurrency, translateCondition } from '@/utils/stringUtils'
 import { LANG_ES_AR } from '@/constants/languages'
 import { CURRENCY_ARS } from '@/constants/currencies'
 

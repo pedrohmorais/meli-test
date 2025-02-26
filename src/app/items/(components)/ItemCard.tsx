@@ -1,5 +1,5 @@
 import { IItem } from '@/app/models/IItem'
-import { formatCurrency } from '@/app/utils/stringUtils'
+import { formatCurrency } from '@/utils/stringUtils'
 import { CURRENCY_ARS } from '@/constants/currencies'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
