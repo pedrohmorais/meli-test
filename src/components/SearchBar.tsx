@@ -5,7 +5,7 @@ import Container from './Container'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-const SearchBar = () => {
+const SearchBar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [searching, setSearching] = useState(false)
   const router = useRouter()
