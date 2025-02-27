@@ -53,8 +53,8 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
   return (
     <Container className="flex-col">
       {navigationComponent}
-      <div className="p-4 bg-white shadow rounded-lg mb-6">
-        <div className="grid  grid-cols-1 md:grid-cols-[54px_474px_auto] gap-6">
+      <div className="p-6 bg-white shadow rounded-lg mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-[54px_474px_auto] gap-6">
           <ItemDetailThumbs
             selected={selectedImage}
             onSelect={setSelectedImage}
@@ -71,17 +71,17 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
             />
           </div>
 
-          <div className="flex flex-col gap-4">
-            <span className="text-sm meliBlack font-light mt-6">
+          <div className="flex flex-col">
+            <span className="text-sm meliBlack font-light mt-7">
               {translateCondition(condition, LANG_ES_AR)} | +{sold_quantity}{' '}
               vendidos
             </span>
-            <h1 className="text-2xl font-semibold">{title}</h1>
-            <span className="meliBlack font-light">
+            <h1 className="text-2xl font-semibold mt-7">{title}</h1>
+            <span className="meliBlack font-light mt-2">
               Por <strong>OCEANGREEN ARGENTINA</strong>
             </span>
 
-            <p className="text-3xl font-bold text-meliBlack">
+            <p className="text-3xl mt-7 font-bold text-meliBlack">
               ${formatCurrency(price.amount, CURRENCY_ARS)}
             </p>
             <p className="text-sm text-meliGreen">
@@ -89,19 +89,19 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
               {formatCurrency(installments_amount || 15000, CURRENCY_ARS)}
             </p>
             {free_shipping && (
-              <p className="text-meliGreen font-semibold">Envio grátis</p>
+              <p className="text-meliGreen mt-7 font-semibold">Envio grátis</p>
             )}
 
             {mainColor && (
-              <p>
+              <p className="mt-7">
                 <strong>Color:</strong> {mainColor.value_name}
               </p>
             )}
           </div>
         </div>
 
-        <div className="mt-6 pt-4 border-t border-meliBgDarkGrey pb-4">
-          <h2 className="text-lg font-semibold mb-3">Descripción</h2>
+        <div className="mt-6 border-t border-meliBgDarkGrey py-7 px-0">
+          <h2 className="text-lg font-semibold mb-4">Descripción</h2>
           <pre className="text-meliBlackLight font-light text-sm">
             {description}
           </pre>
