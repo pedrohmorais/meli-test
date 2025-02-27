@@ -1,6 +1,6 @@
 'use client'
 
-import { IItemDetail } from '@/app/models/IItemDetail'
+import { IItemDetail } from '@/models/IItemDetail'
 import ItemDetailThumbs from './ItemDetailThumbs'
 import Image from 'next/image'
 import { useState } from 'react'

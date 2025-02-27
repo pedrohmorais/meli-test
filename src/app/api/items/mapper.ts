@@ -1,5 +1,5 @@
-import { IApiItems } from '@/app/models/external/IApiItems'
-import { IItems } from '@/app/models/IItems'
+import { IApiItems } from '@/models/external/IApiItems'
+import { IItems } from '@/models/IItems'
 
 export const itemsMapper = (apiItems: IApiItems): IItems => {
   const { filters, results } = apiItems

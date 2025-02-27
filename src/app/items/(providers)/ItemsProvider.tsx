@@ -1,8 +1,8 @@
 'use client'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { itemsService } from '@/services/client/items.service'
-import { IItem } from '@/app/models/IItem'
-import { IItems } from '@/app/models/IItems'
+import { IItem } from '@/models/IItem'
+import { IItems } from '@/models/IItems'
 
 interface ItemsContextProps {
   items: IItem[]

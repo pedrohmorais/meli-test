@@ -1,4 +1,4 @@
-import { IItems } from '@/app/models/IItems'
+import { IItems } from '@/models/IItems'
 import { axiosConfig } from './axios.service'
 
 const search = async (query: string, offset: string): Promise<IItems> => {

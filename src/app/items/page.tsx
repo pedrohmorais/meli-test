@@ -2,7 +2,7 @@ import SearchBar from '@/components/SearchBar'
 import { itemsService } from '@/services/client/items.service'
 import { ItemsProvider } from './(providers)/ItemsProvider'
 import ItemsPage from './(components)/ItemsPage'
-import { IItem } from '../models/IItem'
+import { IItem } from '../../models/IItem'
 
 const Page = async ({
   searchParams,

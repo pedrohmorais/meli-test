@@ -1,12 +1,12 @@
-import { IApiItems } from '@/app/models/external/IApiItems'
-import { IItems } from '@/app/models/IItems'
+import { IApiItems } from '@/models/external/IApiItems'
+import { IItems } from '@/models/IItems'
 import { axiosConfig } from './axios.service'
 import { itemsMapper } from '@/app/api/items/mapper'
-import { IItemDetail } from '@/app/models/IItemDetail'
+import { IItemDetail } from '@/models/IItemDetail'
 import { itemDetailMapper } from '@/app/api/items/[id]/mapper'
-import { IApiItemDetail } from '@/app/models/external/IApiItemDetail'
-import { IApiItemDescription } from '@/app/models/external/IApiItemDescription'
-import { IApiItemCategory } from '@/app/models/external/IApiItemCategory'
+import { IApiItemDetail } from '@/models/external/IApiItemDetail'
+import { IApiItemDescription } from '@/models/external/IApiItemDescription'
+import { IApiItemCategory } from '@/models/external/IApiItemCategory'
 
 const search = async (query: string, offset: string): Promise<IItems> => {
   return axiosConfig

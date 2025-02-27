@@ -1,7 +1,7 @@
-import { IApiItemCategory } from '@/app/models/external/IApiItemCategory'
-import { IApiItemDescription } from '@/app/models/external/IApiItemDescription'
-import { IApiItemDetail } from '@/app/models/external/IApiItemDetail'
-import { IItemDetail } from '@/app/models/IItemDetail'
+import { IApiItemCategory } from '@/models/external/IApiItemCategory'
+import { IApiItemDescription } from '@/models/external/IApiItemDescription'
+import { IApiItemDetail } from '@/models/external/IApiItemDetail'
+import { IItemDetail } from '@/models/IItemDetail'
 
 const getDecimalPlaces = (num: number): number => {
   const str = num.toString()

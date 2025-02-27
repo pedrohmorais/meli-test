@@ -1,4 +1,4 @@
-import { IItemDetail } from '@/app/models/IItemDetail'
+import { IItemDetail } from '@/models/IItemDetail'
 import SearchBar from '@/components/SearchBar'
 import { itemsService } from '@/services/server/items.service'
 import ItemDetail from './(components)/ItemDetail'

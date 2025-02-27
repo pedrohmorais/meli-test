@@ -1,4 +1,4 @@
-import { IItem } from '@/app/models/IItem'
+import { IItem } from '@/models/IItem'
 import { formatCurrency } from '@/utils/stringUtils'
 import { CURRENCY_ARS } from '@/constants/currencies'
 import Image from 'next/image'
