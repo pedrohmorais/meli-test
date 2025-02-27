@@ -10,7 +10,7 @@ const ItemsPage = () => {
 
   return (
     <main className="bg-meliBgDefault min-h-screen">
-      <div className="bg-meliBgDarkGrey">
+      <div className="bg-meliBgDarkGrey pb-8">
         <Container className="flex-col">
           <div className="flex flex-col w-full gap-1 pt-8">
             {pagedItems.length > 0 ? (
@@ -21,7 +21,7 @@ const ItemsPage = () => {
           </div>
         </Container>
       </div>
-      <Container>
+      <Container className="flex justify-center">
         <ItemPagination />
       </Container>
     </main>

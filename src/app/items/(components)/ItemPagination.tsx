@@ -10,14 +10,14 @@ const ItemPagination = () => {
   }
 
   return (
-    <div className="flex gap-2 items-center mt-4">
+    <div className="flex justify-center gap-[2px] items-center mt-4 mb-8 w-max">
       {Array.from({ length: totalPages }, (_, index) => (
         <button
           key={index + 1}
-          className={`px-3 py-1 border rounded ${
+          className={`px-[13px] py-1 border rounded text-meliBlack hover:text-meliBlue ${
             page === index + 1
-              ? 'bg-blue-500 text-white'
-              : 'bg-white border-gray-300'
+              ? 'border-meliBlue'
+              : 'bg-meliBgDefault border-transparent'
           }`}
           onClick={() => handlePageChange(index + 1)}
         >
@@ -25,7 +25,7 @@ const ItemPagination = () => {
         </button>
       ))}
       <button
-        className="ml-2 px-3 py-1 border rounded bg-gray-200"
+        className="ml-2 px-3 py-1 bg-transparent hover:text-meliBlue text-meliBlack"
         disabled={page >= totalPages}
         onClick={() => handlePageChange(page + 1)}
       >
