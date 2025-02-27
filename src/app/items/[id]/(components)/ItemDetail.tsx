@@ -61,13 +61,15 @@ const ItemDetail = ({ itemDetail }: { itemDetail: IItemDetail }) => {
             thumbnails={pictures}
           />
 
-          <div>
+          <div className="md:w-[474px] min-h-[474px] relative">
             <Image
               src={pictures[selectedImage]}
+              blurDataURL={pictures[selectedImage]}
+              placeholder="blur"
+              sizes="(max-width: 768px) 100vw, (max-width: 474px) 474px, 474px"
               alt="Imagem Principal"
-              width={474}
-              height={474}
-              className="rounded-lg w-full h-auto"
+              fill
+              className="rounded-lg !w-auto !left-1/2 -translate-x-1/2"
             />
           </div>
 

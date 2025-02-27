@@ -14,23 +14,25 @@ const ItemDetailThumbs = ({
 }: ItemDetailThumbsProps) => {
   const maxItems = 7
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex md:flex-col gap-2">
       {thumbnails.slice(0, maxItems).map((thumb, index) => (
         <figure
           key={index}
           onClick={() => onSelect(index)}
           className={`
             border-2 rounded cursor-pointer hover:border-meliBlue w-[54] h-[54] flex items-center justify-center
-            overflow-hidden
+            overflow-hidden  !relative
             ${selected === index ? 'border-meliBlue' : ''}
           `}
         >
           <Image
             src={thumb}
+            blurDataURL={thumb}
+            placeholder="blur"
             alt={`Thumbnail ${index + 1}`}
-            width={44}
-            height={44}
-            className="rounded object-cover"
+            fill
+            sizes="52px, 52px, 52px"
+            className="!h-[52px] !w-auto !left-1/2 -translate-x-1/2"
           />
         </figure>
       ))}

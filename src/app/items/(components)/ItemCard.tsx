@@ -18,11 +18,14 @@ const ItemCard = ({ item }: CardProps) => {
       className="flex border shadow-sm px-8 py-4 bg-white w-full cursor-pointer"
       onClick={() => goToDetail()}
     >
-      <div className="w-[180] h-[240] flex-shrink-0 relative">
+      <div className="w-[100] md:w-[180] h-[240] flex-shrink-0 relative">
         <Image
           src={item.picture}
+          blurDataURL={item.picture}
+          placeholder="blur"
           alt={item.title}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 100px) 100px, 180px"
           className="object-contain rounded-md"
         />
       </div>

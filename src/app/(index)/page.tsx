@@ -87,6 +87,8 @@ export default function Home() {
         </div>
         <Image
           src="/banner.png"
+          blurDataURL={'/banner.png'}
+          placeholder="blur"
           alt="Promoção Lojas Oficiais"
           width={400}
           height={267}

@@ -27,13 +27,15 @@ const SearchBar: React.FC = () => {
   return (
     <div className="bg-meliBgPrimary p-2">
       <Container>
-        <div className="max-w-[54px] md:max-w-max overflow-hidden flex items-center">
+        <div className="max-w-[54px] md:max-w-[148px] overflow-hidden flex items-center">
           <Image
             src="/meli-logo.png"
+            blurDataURL={'/meli-logo.png'}
+            placeholder="blur"
             alt="Mercado Libre"
-            className="cursor-pointer max-w-max"
+            className="cursor-pointer max-w-max h-auto"
             width={148}
-            height={42}
+            height={38}
             onClick={handleLogoClick}
           />
         </div>
@@ -54,6 +56,7 @@ const SearchBar: React.FC = () => {
           />
           <Image
             src="/icons/search.png"
+            blurDataURL={'/icons/search.png'}
             alt="Search Icon"
             width={20}
             height={20}
