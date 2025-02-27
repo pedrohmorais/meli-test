@@ -9,19 +9,22 @@ const ItemPagination = () => {
     changePage(page)
   }
 
+  const totalButtons = totalPages > 20 ? 20 : totalPages
+  const sumToIndex = totalPages > 20 ? totalPages - 20 : 0
+
   return (
     <div className="flex justify-center gap-[2px] items-center mt-4 mb-8 w-max">
-      {Array.from({ length: totalPages }, (_, index) => (
+      {Array.from({ length: totalButtons }, (_, index) => (
         <button
-          key={index + 1}
+          key={sumToIndex + index + 1}
           className={`px-[13px] py-1 border rounded text-meliBlack hover:text-meliBlue ${
-            page === index + 1
+            page === sumToIndex + index + 1
               ? 'border-meliBlue'
               : 'bg-meliBgDefault border-transparent'
           }`}
-          onClick={() => handlePageChange(index + 1)}
+          onClick={() => handlePageChange(sumToIndex + index + 1)}
         >
-          {index + 1}
+          {sumToIndex + index + 1}
         </button>
       ))}
       <button
